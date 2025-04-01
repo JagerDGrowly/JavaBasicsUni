@@ -1,10 +1,10 @@
-package com.lab2.task1.arrays;
+package com.lab2.task1.traditional;
 
 import java.util.*;
 
 /**
  * The class demonstrates the ability to get the maximum column values
- * in a two-dimensional array and created using java.util.arrays
+ * in a two-dimensional array and created without using java.util.arrays
  */
 public class Main {
     public static void main(String[] args) {
@@ -37,8 +37,31 @@ public class Main {
      * @param to upper limit of the range for random numbers (not inclusive)
      */
     public static void makeArray(int[][] arr, Random r, int n, int from, int to) {
-        Arrays.setAll(arr, i -> fillRow(r, n, from, to));
-        System.out.println(Arrays.deepToString(arr));
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = fillRow(r, n, from, to);
+        }
+
+        System.out.print("[");
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("[");
+
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j]);
+
+                if (j < arr[i].length - 1) {
+                    System.out.print(", ");
+                }
+            }
+
+            System.out.print("]");
+
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println("]");
     }
 
     /**
@@ -49,8 +72,21 @@ public class Main {
      * @param maxes an array to store the maximum values (must have a size equal to the number of lines in arr)
      */
     public static void makeArray(int[][] arr, int[] maxes) {
-        Arrays.setAll(maxes, i -> getMaxInRow(arr, i));
-        System.out.println(Arrays.toString(maxes));
+        for (int i = 0; i < maxes.length; i++) {
+            maxes[i] = getMaxInRow(arr, i);
+        }
+
+        System.out.print("[");
+
+        for (int i = 0; i < maxes.length; i++) {
+            System.out.print(maxes[i]);
+
+            if (i < maxes.length - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println("]");
     }
 
     /**
@@ -63,8 +99,13 @@ public class Main {
      * @param symbol a character that will be repeated to create strings
      */
     public static void makeArray(int[] maxes, String[] linesArr, String symbol) {
-        Arrays.setAll(linesArr, i -> symbol.repeat(maxes[i]));
-        Arrays.stream(linesArr).forEach(System.out::println);
+        for (int i = 0; i < linesArr.length; i++) {
+            linesArr[i] = symbol.repeat(maxes[i]);
+        }
+
+        for (String s : linesArr) {
+            System.out.println(s);
+        }
     }
 
     /**
@@ -78,7 +119,11 @@ public class Main {
      */
     public static int[] fillRow(Random random, int size, int from, int to) {
         int[] result = new int[size];
-        Arrays.setAll(result, j -> Math.abs(random.nextInt() % (to - from)) + from);
+
+        for (int j = 0; j < size; j++) {
+            result[j] = Math.abs(random.nextInt() % (to - from)) + from;
+        }
+
         return result;
     }
 
@@ -90,9 +135,14 @@ public class Main {
      * @return minimum value
      */
     public static int getMaxInRow(int[][] arr, int i) {
-        int[] row = new int[arr[i].length];
-        Arrays.setAll(row, j -> arr[i][j]);
-        Arrays.sort(row);
-        return row[row.length - 1];
+        int max = arr[i][0];
+
+        for (int j = 1; j < arr[i].length; j++) {
+            if (arr[i][j] > max) {
+                max = arr[i][j];
+            }
+        }
+
+        return max;
     }
 }
