@@ -2,7 +2,18 @@ package com.lab2.task5;
 
 import static com.lab2.task5.KioskUtilities.*;
 
+/**
+ * A demo class to test the functionality of the Kiosk class and related utilities.
+ * It creates a Kiosk, populates it with hours, and performs various analyses such as
+ * calculating average customer counts, finding the hour with the minimum customers,
+ * and searching for specific words in comments.
+ */
 public class KioskDemo {
+    /**
+     * Creates a Kiosk object with predefined hours for testing purposes.
+     *
+     * @return a Kiosk object populated with hours and customer data
+     */
     public static Kiosk createKiosk() {
         Kiosk kiosk = new Kiosk();
         kiosk.setName("Quick Snacks");
@@ -20,6 +31,12 @@ public class KioskDemo {
         return kiosk;
     }
 
+    /**
+     * Prints the hours where a specific word is found in the comments of a Kiosk.
+     *
+     * @param kiosk the Kiosk object to search
+     * @param word  the word to search for in the comments
+     */
     public static void printWord(Kiosk kiosk, String word) {
         Hour[] result = findWord(kiosk, word);
         if (result == null) {
@@ -33,6 +50,13 @@ public class KioskDemo {
         }
     }
 
+    /**
+     * Tests the functionality of a Kiosk by performing various analyses and printing the results.
+     * This includes calculating the average number of customers, finding the hour with the minimum
+     * number of customers, searching for specific words in comments, modifying an hour, and clearing hours.
+     *
+     * @param kiosk the Kiosk object to test
+     */
     public static void testKiosk(Kiosk kiosk) {
         System.out.println("Average amount of customers: " + averageValueOfCustomers(kiosk));
         System.out.println("Hour with a minimum amount of customers: " +
@@ -58,6 +82,11 @@ public class KioskDemo {
         kiosk.clearHours();
     }
 
+    /**
+     * The main method that initiates the testing of a Kiosk object.
+     *
+     * @param args command-line arguments (not used in this program)
+     */
     public static void main(String[] args) {
         testKiosk(createKiosk());
     }
