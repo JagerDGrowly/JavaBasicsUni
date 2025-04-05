@@ -1,7 +1,5 @@
 package com.lab2.task5;
 
-import java.util.Arrays;
-
 public class Kiosk {
     private String name;
     private String address;
@@ -35,8 +33,8 @@ public class Kiosk {
         setHours(HourUtilities.addToArray(getHours(), hour));
     }
 
-    public void addHour(int numberOfCustomers, String comments) {
-        Hour hour = new Hour(numberOfCustomers, comments);
+    public void addHour(String time, int numberOfCustomers, String comments) {
+        Hour hour = new Hour(time, numberOfCustomers, comments);
         addHour(hour);
     }
 

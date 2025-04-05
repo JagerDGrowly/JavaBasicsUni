@@ -1,15 +1,25 @@
 package com.lab2.task5;
 
 public class Hour {
+    private String time;
     private int numberOfCustomers;
     private String comments;
 
     public Hour() {
     }
 
-    public Hour(int numberOfCustomers, String comments) {
+    public Hour(String time, int numberOfCustomers, String comments) {
+        this.time = time;
         this.numberOfCustomers = numberOfCustomers;
         this.comments = comments;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getNumberOfCustomers() {

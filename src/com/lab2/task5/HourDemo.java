@@ -19,6 +19,7 @@ public class HourDemo {
     }
 
     public static void testHour(Hour hour) {
+        hour.setTime("1 p.m.");
         hour.setNumberOfCustomers(200);
         hour.setComments("A lot of people in the Kiosk!");
         testWord(hour, "Kiosk!");
